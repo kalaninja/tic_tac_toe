@@ -13,7 +13,10 @@ fn read_move() -> Option<(u32, u32)> {
 
     let mut input = String::new();
     io::stdin().read_line(&mut input).unwrap();
-    input.trim().split('-').map(|x| x.parse::<u32>().unwrap()).next_tuple()
+    input.trim()
+        .split('-')
+        .flat_map(|x| x.parse::<u32>())
+        .next_tuple()
 }
 
 fn main() {
